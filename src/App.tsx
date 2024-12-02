@@ -1,19 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import { supabase } from './config/supabase';
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 import LandingPage from './pages/LandingPage';
+import Login from './pages/Login';
 import Resume from './components/Resume';
 import NewResume from './pages/NewResume';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/new" element={<NewResume />} />
-        <Route path="/:path" element={<ResumeRoute />} />
-      </Routes>
-    </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <LandingPage />
+                  </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/new"
+                element={
+                  <ProtectedRoute>
+                    <NewResume />
+                  </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/:path"
+                element={
+                  <ProtectedRoute>
+                    <ResumeRoute />
+                  </ProtectedRoute>
+                }
+            />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
   );
 }
 
@@ -25,8 +52,8 @@ function ResumeRoute() {
   useEffect(() => {
     async function fetchEmail() {
       const { data: resumesData } = await supabase
-        .from('resumes')
-        .select(`
+          .from('resumes')
+          .select(`
           data,
           users!inner (
             email
@@ -54,9 +81,9 @@ function ResumeRoute() {
 
   if (!email) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-400"></div>
-      </div>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-400"></div>
+        </div>
     );
   }
 
