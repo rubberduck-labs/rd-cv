@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @media screen {
+    html {
+      font-size: 16px;
+    }
+  }
+}
+
+[data-editing="true"] .page-break-start {
+  border-bottom: 2px dashed #ddd;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.page-break-button {
+  position: absolute;
+  left: -3cm;
+  bottom: -1cm;
+  transform: translateY(50%);
+  z-index: 10;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
