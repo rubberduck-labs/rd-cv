@@ -1,4 +1,4 @@
-import React from 'react';
+import {useEffect, useState} from 'react';
 import { BrowserRouter, Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import { supabase } from './config/supabase';
 import { AuthProvider } from './contexts/AuthContext';
