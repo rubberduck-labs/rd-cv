@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ResumeData } from '../hooks/useResumeData';
 import { exportToDocx } from '../utils/docxExport';
 

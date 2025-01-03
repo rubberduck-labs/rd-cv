@@ -1,3 +1,4 @@
+import React from 'react';
 import Section from './Section';
 import LanguageGrid from './LanguageGrid';
 import type { ResumeData } from '../hooks/useResumeData';
@@ -11,7 +12,7 @@ interface LanguagesSectionProps {
 export default function LanguagesSection({ languages, isEditing, onUpdate }: LanguagesSectionProps) {
   return (
     <Section title="Språk">
-      <LanguageGrid
+      <LanguageGrid 
         languages={languages}
         isEditing={isEditing}
         onUpdate={onUpdate}

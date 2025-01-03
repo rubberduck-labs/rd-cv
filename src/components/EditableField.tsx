@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface EditableFieldProps {
   value: string;
@@ -7,9 +7,9 @@ interface EditableFieldProps {
   label?: string;
 }
 
-export default function EditableField({
-  value,
-  onChange,
+export default function EditableField({ 
+  value, 
+  onChange, 
   multiline = false,
   label
 }: EditableFieldProps) {
@@ -70,7 +70,7 @@ export default function EditableField({
   }
 
   return (
-    <div
+    <div 
       onClick={() => setIsEditing(true)}
       className="cursor-pointer hover:bg-primary-50 p-2 rounded-md transition-colors"
     >

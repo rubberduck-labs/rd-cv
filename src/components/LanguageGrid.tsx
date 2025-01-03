@@ -1,3 +1,4 @@
+import React from 'react';
 import { X } from 'lucide-react';
 import EditableText from './EditableText';
 import AddLanguage from './AddLanguage';
@@ -41,8 +42,8 @@ export default function LanguageGrid({ languages, isEditing = false, onUpdate }:
   return (
     <div className="flex flex-col gap-4">
       {languages.map(({ name, level }, index) => (
-        <div
-          key={index}
+        <div 
+          key={index} 
           className="relative group flex justify-between items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100"
         >
           <span className="text-secondary-800 font-medium">

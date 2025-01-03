@@ -68,11 +68,8 @@ export default function ExperienceItem({
   };
 
   return (
-    <div 
-      className="relative group"
-      data-has-break={hasPageBreak}
-    >
-      <div className="experience-item bg-white p-6 rounded-lg border border-gray-200">
+    <div className={`experience-item relative group no-break ${hasPageBreak ? 'page-break-start' : ''}`}>
+      <div className="bg-white p-6 rounded-lg border border-gray-200">
         <div className="flex flex-row justify-between items-baseline gap-4 mb-4">
           <h4 className="text-lg font-semibold text-secondary-900">
             <EditableText

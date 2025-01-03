@@ -10,10 +10,107 @@
   }
 }
 
-[data-editing="true"] .page-break-start {
-  border-bottom: 2px dashed #ddd;
-  padding-bottom: 2rem;
+/* PDF Generation Styles */
+.generating-pdf {
+  width: 210mm !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: white !important;
+}
+
+.generating-pdf .header-section {
+  padding: 40mm 20mm 20mm !important;
+  background-color: #fffbeb !important;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+.generating-pdf .content-wrapper {
+  padding: 20mm !important;
+}
+
+.generating-pdf .page-break-start {
+  break-before: page !important;
+  padding-top: 20mm !important;
+}
+
+.generating-pdf .no-break {
+  break-inside: avoid !important;
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  html {
+    font-size: 11pt;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: white;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .header-section {
+    padding: 40mm 20mm 20mm !important;
+    background-color: #fffbeb !important;
+  }
+
+  .content-wrapper {
+    padding: 20mm !important;
+  }
+
+  .page-break-start {
+    break-before: page !important;
+    padding-top: 20mm !important;
+  }
+
+  .no-break {
+    break-inside: avoid !important;
+  }
+
+  section {
+    margin-bottom: 2rem !important;
+  }
+
+  .experience-item {
+    margin-bottom: 1.5rem !important;
+    position: relative;
+  }
+
+  .experience-item:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  h4 {
+    font-size: 13pt !important;
+    line-height: 1.3 !important;
+  }
+
+  p {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* Regular styles */
+.content-wrapper {
+  background: white;
+}
+
+.experience-item {
+  position: relative;
   margin-bottom: 2rem;
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
 }
 
 .page-break-button {
@@ -25,4 +122,46 @@
   display: block;
   opacity: 1;
   transition: opacity 0.2s;
+}
+
+.page-break-start {
+  position: relative;
+}
+
+[data-editing="true"] .page-break-start {
+  border-top: 2px dashed #ddd;
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+/* Hide UI elements in PDF */
+.generating-pdf .print\:hidden,
+.generating-pdf .page-break-button,
+.generating-pdf [data-editing="true"] .page-break-start {
+  display: none !important;
+}
+
+/* Tag styles */
+.tech-badge, .role-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 1.75rem;
+  padding: 0 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tech-badge {
+  background-color: #fffbeb;
+  color: #374151;
+  border: 1px solid #fbbf24;
+}
+
+.role-badge {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #9ca3af;
 }

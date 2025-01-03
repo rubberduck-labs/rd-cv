@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface EditableTextProps {
   value: string;
@@ -16,7 +16,7 @@ export default function EditableText({
   className = ''
 }: EditableTextProps) {
   const [editValue, setEditValue] = useState(value);
-
+  
   useEffect(() => {
     setEditValue(value);
   }, [value]);
@@ -33,6 +33,9 @@ export default function EditableText({
     onChange(editValue);
   };
 
+  const handleCancel = () => {
+    setEditValue(value);
+  };
 
   return (
     multiline ? (

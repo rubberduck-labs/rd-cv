@@ -1,5 +1,7 @@
+import React from 'react';
 import { X } from 'lucide-react';
 import EditableText from './EditableText';
+import AddEducation from './AddEducation';
 
 interface EducationProps {
   institution: string;
@@ -10,9 +12,9 @@ interface EducationProps {
   onRemove?: () => void;
 }
 
-export default function Education({
-  institution,
-  degree,
+export default function Education({ 
+  institution, 
+  degree, 
   period,
   isEditing = false,
   onUpdate,

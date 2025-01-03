@@ -1,3 +1,4 @@
+import React from 'react';
 import { Pencil } from 'lucide-react';
 
 interface EditToggleProps {

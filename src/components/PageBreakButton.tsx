@@ -1,3 +1,4 @@
+import React from 'react';
 import { ArrowDown, X } from 'lucide-react';
 
 interface PageBreakButtonProps {
