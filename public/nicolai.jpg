@@ -1,0 +1,1 @@
+<command>curl -o public/nicolai.jpg https://raw.githubusercontent.com/stackblitz/bolt/main/examples/nicolai.jpg</command>
