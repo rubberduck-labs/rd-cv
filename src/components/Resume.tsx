@@ -22,8 +22,6 @@ interface ResumeProps {
 }
 
 export default function Resume({ email }: ResumeProps) {
-  const navigate = useNavigate();
-  const { user } = useAuth();
   const {
     resumeData,
     isEditing,
@@ -34,6 +32,7 @@ export default function Resume({ email }: ResumeProps) {
   
   const { pageBreaks, togglePageBreak } = useExperiencePageBreaks();
   const componentRef = useRef<HTMLDivElement>(null);
+  const { user } = useAuth();
 
   const handleExportPDF = async () => {
     if (componentRef.current) {
@@ -53,6 +52,8 @@ export default function Resume({ email }: ResumeProps) {
   const handleUpdate = (newData: typeof resumeData) => {
     updateResume(newData);
   };
+
+  const canEdit = user?.email === email;
 
   return (
     <>
@@ -120,24 +121,13 @@ export default function Resume({ email }: ResumeProps) {
           </div>
         </div>
       </PrintWrapper>
-      
-      {!isEditing && !user && (
-        <button
-          onClick={() => navigate('/login')}
-          className="fixed bottom-8 left-8 bg-primary-400 text-secondary-900 p-3 rounded-full shadow-lg hover:bg-primary-500 transition-colors print:hidden"
-          title="Logg inn for å redigere"
-        >
-          <LogIn size={20} />
-        </button>
-      )}
-      {user && (
+      {canEdit && (
         <EditToggle 
           isEditing={isEditing}
           isSaving={isSaving}
           onToggle={() => setIsEditing(!isEditing)}
         />
       )}
-      
       {!isEditing && (
         <DownloadButtons
           onPrintPDF={handleExportPDF}
